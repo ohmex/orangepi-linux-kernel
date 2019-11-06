@@ -980,6 +980,18 @@ static int sndpcm_perpare(struct snd_pcm_substream *substream,
 				reg_val |=(0<<29);
 				writel(reg_val, baseaddr + SUNXI_DAC_FIFOC);
 				break;
+			case 88200:
+				if (clk_set_rate(codec_pll, 22579200)) {
+					pr_err("set codec_pll rate fail\n");
+				}
+				if (clk_set_rate(codec_moduleclk, 22579200)) {
+					pr_err("set codec_moduleclk rate fail\n");
+				}
+				reg_val = readl(baseaddr + SUNXI_DAC_FIFOC);
+				reg_val &=~(7<<29);
+				reg_val |=(7<<29);
+				writel(reg_val, baseaddr + SUNXI_DAC_FIFOC);
+				break;
 			case 96000:
 				if (clk_set_rate(codec_pll, 24576000)) {
 					pr_err("set codec_pll rate fail\n");

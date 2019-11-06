@@ -211,9 +211,13 @@ s32 tv_init(void)
 	char sub_key[20];
 	g_suspend = false;
 
-	type = script_get_item("tv_para", "tv_used", &val);
-	if(SCIRPT_ITEM_VALUE_TYPE_INT == type)
-		g_used = val.val;
+//	## hyphop ##
+//	type = script_get_item("tv_para", "tv_used", &val);
+//
+//	if(SCIRPT_ITEM_VALUE_TYPE_INT == type)
+//		g_used = val.val;
+//
+	g_used = true;
 
 	if(g_used) {
 		unsigned int value, output_type0, output_mode0, output_type1, output_mode1;

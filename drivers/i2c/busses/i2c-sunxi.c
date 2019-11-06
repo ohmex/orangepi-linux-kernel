@@ -431,7 +431,9 @@ static int twi_start(void __iomem *base_addr, int bus_num)
 	twi_set_start(base_addr);
 	while((1 == twi_get_start(base_addr))&&(--timeout));
 	if (timeout == 0) {
-		I2C_ERR("[i2c%d] START can't sendout!\n", bus_num);
+// ## hyphop ##
+// stop flood 
+//		I2C_ERR("[i2c%d] START can't sendout!\n", bus_num);
 		return SUNXI_I2C_FAIL;
 	}
 
