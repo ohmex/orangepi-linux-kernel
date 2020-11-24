@@ -9,6 +9,9 @@ obj-$(CONFIG_OV4689_SDV)	+= ov4689_sdv.o
 obj-$(CONFIG_GC1004_MIPI)	+= gc1004_mipi.o
 obj-$(CONFIG_H22_MIPI)		+= h22_mipi.o
 
+else ifneq ($(strip $(CONFIG_ARCH_SUNXI)),)
+obj-m     += gc2035.o
+
 else
 obj-m			+= ov5640.o
 obj-m			+= ov2640.o
